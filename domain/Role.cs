@@ -8,5 +8,6 @@ namespace domain
 {
     class Role
     {
+        string id;
     }
 }

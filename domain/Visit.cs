@@ -8,5 +8,9 @@ namespace domain
 {
     class Visit
     {
+       private DateTime time_start;
+       private DateTime time_end;
+       private string patient_id;
+       private string doctor_id;
     }
 }

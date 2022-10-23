@@ -8,5 +8,8 @@ namespace domain
 {
     class TimeTable
     {
+        private string doctor_id;
+        DateTime start_time;
+        DateTime end_time;
     }
 }

@@ -8,5 +8,7 @@ namespace domain
 {
     class Specialization
     {
+        private int id;
+        private string name;
     }
 }
