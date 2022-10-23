@@ -13,6 +13,6 @@ namespace domain
         private string last_name;
         private string first_name;
         private string middle_name;
-        private string role;
+        private Role role; 
     }
 }
