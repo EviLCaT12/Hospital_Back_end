@@ -8,5 +8,8 @@ namespace domain
 {
     class TimeTable
     {
+        int DoctorId { get; set; }
+        DateTime TimeStart { get; set; }
+        DateTime TimeEnd { get; set; }
     }
 }

@@ -8,5 +8,9 @@ namespace domain
 {
     class Doctor
     {
+        string Id { get; set; }
+        string FullName { get; set; }
+
+        Specialization specialization { get; set; }
     }
 }
