@@ -8,5 +8,10 @@ namespace domain
 {
     class Visit
     {
+        int Id { get; set; }
+        DateTime TimeStart { get; set; }
+        DateTime TimeEnd { get; set; }
+        int  UserId { get; set; }
+        int  DoctorId { get; set; }
     }
 }
