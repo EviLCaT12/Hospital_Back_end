@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace domain
+namespace domain.Models
 {
-    class TimeTable
+    public class Visit
     {
-        int DoctorId { get; set; }
+        int Id { get; set; }
         DateTime TimeStart { get; set; }
         DateTime TimeEnd { get; set; }
+        int  UserId { get; set; }
+        int  DoctorId { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace domain
+namespace domain.Models
 {
-    class Specialization
+    public class Specialization
     {
         int Id { get; set; }
         string Name { get; set; }
