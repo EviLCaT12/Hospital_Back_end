@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace domain
+namespace domain.Models
 {
-    class Role
+    public enum Role
     {
-        int Id { get; set; }
-        string Name { get; set; }
+        Patient,
+        Administrator
     }
 }

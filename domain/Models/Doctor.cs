@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace domain
+namespace domain.Models 
 {
-    class Doctor
+    public class Doctor
     {
-        string Id { get; set; }
+        int Id { get; set; }
         string FullName { get; set; }
 
         Specialization specialization { get; set; }
