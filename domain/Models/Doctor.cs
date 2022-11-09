@@ -8,9 +8,33 @@ namespace domain.Models
 {
     public class Doctor
     {
-        int Id { get; set; }
-        string FullName { get; set; }
+        public int Id { get; set; }
+        public string FullName { get; set; }
+        Specialization Specialization { get; set; }
 
-        Specialization specialization { get; set; }
+
+        public Doctor() : this(0,"", new Specialization()) { }
+        public Doctor(int id, string fullname, Specialization specialization)
+        {
+            Id = id;
+            FullName = fullname;
+            Specialization = specialization;
+        }
+
+        public Result IsValid()
+        {
+            if (string.IsNullOrEmpty(FullName))
+            {
+                return Result.Fail("Non correct name");
+            }
+            else if (string.IsNullOrEmpty(Specialization.Name))
+            {
+                return Result.Fail("Non correct specialization name");
+            }
+            else
+            {
+                return Result.Ok();
+            }
+        }
     }
 }

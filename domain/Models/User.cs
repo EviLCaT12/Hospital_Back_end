@@ -15,6 +15,7 @@ namespace domain.Models
         string FullName { get; set; }
         Role Role { get; set; }
 
+        public User() : this(0, "", "", "", "", new Role()) { }
         public User(int id, string login, string password, string phoneNumber, string fullName, Role role)
         {
             Id = id;

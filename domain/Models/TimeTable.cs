@@ -11,5 +11,12 @@ namespace domain.Models
         int DoctorId { get; set; }
         DateTime TimeStart { get; set; }
         DateTime TimeEnd { get; set; }
+
+        public TimeTable(int doctorId, DateTime start, DateTime end)
+        {
+            DoctorId = doctorId;
+            TimeStart = start;
+            TimeEnd = end;
+        }
     }
 }

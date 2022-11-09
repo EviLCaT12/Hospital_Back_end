@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using domain.Models;
 
+
 namespace domain.Logic
 {
-     public interface IUserRepository : IRepository<User>
+    interface IVisitRepository
     {
-        bool IsUserExist(string login);
-        User? GetUserByLogin(string login);
-        bool CreateUser(User user);
+        bool SaveVisit(Visit visit);
+
     }
 }

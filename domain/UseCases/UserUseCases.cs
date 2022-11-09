@@ -47,13 +47,21 @@ namespace domain.UseCases
             {
                 return Result.Fail<User>("Invalid input data:" + isValid.Error);
             }
-            else if (!_db.IsUserExist(user.Login))
+            else if (_db.IsUserExist(user.Login))
             {
                 return Result.Fail<User>("User is already exist");
             }
             else
             {
-                return _db.CreateUser(user) ? Result.Ok(user) : Result.Fail<User>("Error while creating. Try again later");
+                try
+                {
+                    _db.CreateUser(user);
+                    return Result.Ok(user);
+                }
+                catch
+                {
+                    return Result.Fail<User>("Error while creating. Try again later");
+                }
             }
         }
 
