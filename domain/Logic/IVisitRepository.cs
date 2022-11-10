@@ -8,9 +8,11 @@ using domain.Models;
 
 namespace domain.Logic
 {
-    interface IVisitRepository
+    public interface IVisitRepository : IRepository<Visit>
     {
-        bool SaveVisit(Visit visit);
-
+        bool IsVisitExist(Visit visit);
+        IEnumerable<DateTime> GetFreeVisitbuSpec(Specialization specialization);
+        IEnumerable<DateTime> GetFreeVisitByDoctor(Doctor doctor);
+        bool CreateVisit(Visit visit);
     }
 }

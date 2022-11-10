@@ -64,7 +64,7 @@ namespace domain.UseCases
 
         public Result<Doctor> GetDoctorBySpecialization(Specialization specialization)
         {
-            var isValid = specialization.isValid();
+            var isValid = specialization.IsValid();
 
             if (isValid.IsFailure)
             {

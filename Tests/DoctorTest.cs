@@ -100,7 +100,7 @@ namespace Tests
             var result = _doctorUseCases.GetDoctorBySpecialization(new Specialization(0, "cqwecrqwe"));
 
             Assert.True(result.IsFailure);
-            Assert.Equal("Doctor  not found", result.Error);
+            Assert.Equal("Doctor not found", result.Error);
         }
     }
 }

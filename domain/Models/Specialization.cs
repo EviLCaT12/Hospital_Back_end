@@ -19,7 +19,7 @@ namespace domain.Models
             Name = name;
         }
 
-        public Result isValid()
+        public Result IsValid()
         {
             if (string.IsNullOrEmpty(Name))
             {
