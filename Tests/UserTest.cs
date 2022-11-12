@@ -29,7 +29,7 @@ namespace Tests
         }
 
         [Fact]
-        public void UserNotFound_ShouldFail()
+        public void UserIsNotFound_ShouldFail()
         {
             
             _userRepositoryMock.Setup(repository => repository.GetUserByLogin(It.IsAny<string>()))

@@ -8,7 +8,27 @@ namespace domain.Models
 {
     public class Specialization
     {
-        int Id { get; set; }
-        string Name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+
+        public Specialization() : this(0, "") { }
+        public Specialization(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
+        public Result IsValid()
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                return Result.Fail("Non correct specialization`s name");
+            }
+            else
+            {
+                return Result.Ok();
+            }
+        }
     }
 }
