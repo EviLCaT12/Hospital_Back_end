@@ -8,9 +8,9 @@ namespace domain.Models
 {
     public class TimeTable
     {
-        int DoctorId { get; set; }
-        DateTime TimeStart { get; set; }
-        DateTime TimeEnd { get; set; }
+        public int DoctorId { get; set; }
+        public DateTime TimeStart { get; set; }
+        public DateTime TimeEnd { get; set; }
 
 
         public TimeTable() : this(0, DateTime.MinValue, DateTime.MinValue) { }

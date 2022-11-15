@@ -8,12 +8,12 @@ namespace domain.Models
 {
     public class User
     {
-        int Id { get; set; }
+        public int Id { get; set; }
         public string Login { get; set; }
         string Password { get; set; }
-        string PhoneNumber { get; set; }
-        string FullName { get; set; }
-        Role Role { get; set; }
+        public string PhoneNumber { get; set; }
+        public string FullName { get; set; }
+        public Role Role { get; set; }
 
         public User() : this(0, "", "", "", "", new Role()) { }
         public User(int id, string login, string password, string phoneNumber, string fullName, Role role)
