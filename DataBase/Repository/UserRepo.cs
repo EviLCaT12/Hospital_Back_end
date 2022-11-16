@@ -1,58 +1,69 @@
 ﻿using domain.Logic;
 using domain.Models;
+using DataBase.Converts;
 
 namespace DataBase.Repository
 {
     internal class UserRepo : IUserRepository
     {
-        public void Create(User item)
+        private readonly ApplicationContext _context;
+
+        public UserRepo(ApplicationContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public bool CreateUser(User user)
+        public bool Create(User item)
         {
-            throw new NotImplementedException();
+           _context.Users.Add(item.ToModel());
+            return true; 
         }
 
-        public void Delete(User item)
+        public bool Delete(User item)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.FirstOrDefault(u => u.Id == item.Id);
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                return true;
+            }
+            return false;
         }
 
-        public void Dispose()
+        public IEnumerable<User?> GetAllItem()
         {
-            throw new NotImplementedException();
+            var _users = _context.Users.ToList();
+            var users = _users.Select(x => x.ToDomain()).ToList();
+            return users;
         }
 
-        public IEnumerable<User> GetAllItem()
+        public User? GetItemById(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public User GetItemById(int id)
-        {
-            throw new NotImplementedException();
+            var user = _context.Users.FirstOrDefault(_x => _x.Id == id);
+            return user?.ToDomain();
         }
 
         public User? GetUserByLogin(string login)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.FirstOrDefault(u => u.Login == login);
+            return user?.ToDomain();
         }
 
         public bool IsUserExist(string login)
         {
-            throw new NotImplementedException();
+            var res = _context.Users.FirstOrDefault(u =>u.Login == login);
+            return res != null; 
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public void Update(User item)
+        public bool Update(User item)
         {
-            throw new NotImplementedException();
+           _context.Users.Update(item.ToModel());
+            return true;
         }
     }
 }

@@ -51,9 +51,9 @@ namespace Tests
                 new Doctor(1, "zxc", new Specialization(0, "zxczxc"))
             };
             IEnumerable<Doctor> d = doctors;
-            _doctorRepositoryMock.Setup(repository => repository.GetAllDoctors()).Returns(() => d);
+            _doctorRepositoryMock.Setup(repository => repository.GetAllItem()).Returns(() => d);
 
-            var result = _doctorUseCases.GetAllDoctors();
+            var result = _doctorUseCases.GetAllDoctor();
 
             Assert.True(result.Success);
         }

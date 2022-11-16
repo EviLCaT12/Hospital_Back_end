@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataBase.Models
 {
-    internal class DoctorModel
+    public class DoctorModel
     {
         public int Id { get; set; }
         public string FullName { get; set; }

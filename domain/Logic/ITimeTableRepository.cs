@@ -10,7 +10,7 @@ namespace domain.Logic
     public interface ITimeTableRepository : IRepository<TimeTable>
     {
         TimeTable? GetTimeTableByDoctorAndDate(Doctor doctor, DateTime date);
-        bool CreateTimeTable(TimeTable timeTable);
+        bool CreateTimeTable(TimeTable timetable);
         bool UpdateTimeTable(TimeTable timeTable);
     }
 }

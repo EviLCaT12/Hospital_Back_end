@@ -55,7 +55,7 @@ namespace domain.UseCases
             {
                 try
                 {
-                    _db.CreateUser(user);
+                    _db.Create(user);
                     return Result.Ok(user);
                 }
                 catch

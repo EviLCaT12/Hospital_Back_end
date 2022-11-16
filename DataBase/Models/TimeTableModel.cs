@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataBase.Models
 {
-    internal class TimeTableModel
+    public class TimeTableModel
     {
+        public int Id { get; set; }
         public int DoctorId { get; set; }
-        public DateTime TimeStart { get; set; }
-        public DateTime TimeEnd { get; set; }
+
+        public DateTime date { get; set; }
     }
 }

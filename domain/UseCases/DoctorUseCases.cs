@@ -46,11 +46,6 @@ namespace domain.UseCases
             return _db.DeleteDoctor(id) ? res : Result.Fail<Doctor>("Error while deleting.Try again later");
         }
 
-        public Result<IEnumerable<Doctor>> GetAllDoctors()
-        {
-            return Result.Ok(_db.GetAllDoctors());
-        }
-
         public Result<Doctor> GetDoctorById(int id)
         {
             if (id < 0)
@@ -85,6 +80,12 @@ namespace domain.UseCases
             {
                 return Result.Ok(_db.IsDoctorExist(id));
             }
+        }
+
+        public Result<IEnumerable<Doctor>> GetAllDoctor()
+        {
+            var doctors = _db.GetAllItem();
+            return doctors != null ? Result.Ok(doctors) : Result.Fail<IEnumerable<Doctor>>("We have not doctors :(");
         }
     }
 }
