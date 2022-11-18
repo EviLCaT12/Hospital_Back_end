@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataBase
 {
-    internal class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public DbSet<UserModel> Users { get; set; }
         public DbSet<DoctorModel> Doctors { get; set; }

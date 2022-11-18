@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataBase.Models
 {
-    internal class SpecializationModel
+    public class SpecializationModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

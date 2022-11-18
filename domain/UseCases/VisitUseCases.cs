@@ -43,12 +43,12 @@ namespace domain.UseCases
             {
                 return Result.Fail<Visit>("This visit is already exist");
             }
-            return _db.CreateVisit(visit) ? Result.Ok(visit) : Result.Fail<Visit>("Error while creating visit. Try again later");
+            return _db.Create(visit) ? Result.Ok(visit) : Result.Fail<Visit>("Error while creating visit. Try again later");
         }
 
         public Result<IEnumerable<DateTime>> GetAllFreeSpec(Specialization specialization)
         {
-            var list = _db.GetFreeVisitbuSpec(specialization);
+            var list = _db.GetFreeVisitbySpec(specialization);
             return Result.Ok(list);
         }
 

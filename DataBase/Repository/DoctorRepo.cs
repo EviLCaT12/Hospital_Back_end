@@ -24,27 +24,9 @@ namespace DataBase.Repository
             return true;
         }
 
-        public bool CreateDoctor(Doctor doctor)
-        {
-            var _doctor = doctor.ToModel;
-            _context.Add(doctor);
-            return true;
-        }
-
         public bool Delete(Doctor item)
         {
             var doctor = _context.Doctors.FirstOrDefault(d => d.Id == item.Id);
-            if (doctor != null)
-            {
-                _context.Doctors.Remove(doctor);
-                return true;
-            }
-            return false;
-        }
-
-        public bool DeleteDoctor(int id)
-        {
-            var doctor = _context.Doctors.FirstOrDefault(d => d.Id == id);
             if (doctor != null)
             {
                 _context.Doctors.Remove(doctor);
@@ -91,7 +73,7 @@ namespace DataBase.Repository
 
         public bool Update(Doctor item)
         {
-            _context.Update(item);
+            _context.Doctors.Update(item.ToModel());
             return true;
         }
     }

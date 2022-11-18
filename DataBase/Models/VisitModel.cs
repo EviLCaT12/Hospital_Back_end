@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataBase.Models
 {
-    internal class VisitModel
+    public class VisitModel
     {
         public int Id { get; set; }
         public DateTime TimeStart { get; set; }

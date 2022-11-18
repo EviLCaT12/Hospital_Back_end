@@ -10,9 +10,9 @@ namespace DataBase.Converts
         {
             return new TimeTable
             {
+                Id= model.Id,  
                 DoctorId = model.DoctorId,
-                TimeEnd = model.TimeEnd,
-                TimeStart = model.TimeStart
+                date = model.date
             };
         }
 
@@ -20,9 +20,9 @@ namespace DataBase.Converts
         {
             return new TimeTableModel
             {
+                Id = model.Id,
                 DoctorId = model.DoctorId,
-                TimeEnd = model.TimeEnd,
-                TimeStart = model.TimeStart
+                date = model.date
             };
         }
     }

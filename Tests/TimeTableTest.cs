@@ -33,7 +33,7 @@ namespace Tests
         [Fact]
         public void TryCreateTimeTable_ShouldTrue()
         {
-            _TimeTableRepositoryMock.Setup(repo => repo.CreateTimeTable(It.IsAny<TimeTable>())).Returns(() => true);
+            _TimeTableRepositoryMock.Setup(repo => repo.Create(It.IsAny<TimeTable>())).Returns(() => true);
             var date = new TimeTable(1, 1, DateTime.Today);
             var res = _TimeTableUseCases.CreateTimeTable(date);
             Assert.True(res.Success);
@@ -42,7 +42,7 @@ namespace Tests
         [Fact]
         public void TryUpdateTimeTable_ShouldTrue()
         {
-            _TimeTableRepositoryMock.Setup(repo => repo.UpdateTimeTable(It.IsAny<TimeTable>())).Returns(() => true);
+            _TimeTableRepositoryMock.Setup(repo => repo.Update(It.IsAny<TimeTable>())).Returns(() => true);
             var date = new TimeTable(1, 1, DateTime.Today);
             var res = _TimeTableUseCases.UpdateTimeTable(date);
             Assert.True(res.Success);

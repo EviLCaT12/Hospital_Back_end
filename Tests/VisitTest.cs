@@ -44,7 +44,7 @@ namespace Tests
         [Fact]
         public void TryCreateVisit_ShouldTrue()
         {
-            _visitRepositoryMock.Setup(repo => repo.CreateVisit(It.IsAny<Visit>())).Returns(() => true);
+            _visitRepositoryMock.Setup(repo => repo.Create(It.IsAny<Visit>())).Returns(() => true);
 
             var visit = new Visit(DateTime.MinValue, DateTime.MaxValue, 1, 1);
             var res = _visitUseCases.CreateVisit(visit);
