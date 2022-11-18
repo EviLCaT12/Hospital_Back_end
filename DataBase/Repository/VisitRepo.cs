@@ -44,7 +44,7 @@ namespace DataBase.Repository
 
         public IEnumerable<DateTime> GetFreeVisitbySpec(Specialization specialization)
         {
-            var doctors = _context.Doctors.Where(d => d.Specialization == specialization);
+            var doctors = _context.Doctors.Where(d => d.Specialization.ToDomain() == specialization);
             return _context.Visits.Where(a => a.UserId == -1 && doctors.Any(d => d.Id == a.DoctorId)).Select(a => a.TimeStart);
         }
 
@@ -61,9 +61,7 @@ namespace DataBase.Repository
 
         public bool IsVisitExist(Visit visit)
         {
-            var _visit = _context.Visits.FirstOrDefault(v => v.Id == visit.Id);
-            if (_visit == null) return false;
-            else return true;
+            return _context.Visits.FirstOrDefault(v => v.Id == visit.Id) != null;
         }
 
         public void Save()

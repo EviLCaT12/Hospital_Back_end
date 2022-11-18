@@ -50,9 +50,7 @@ namespace DataBase.Repository
 
         public TimeTable? GetTimeTableByDoctorAndDate(Doctor doctor, DateTime date)
         {
-            var _doctor = _context.Doctors.FirstOrDefault(d => d.Id == doctor.Id);
-            var _timeTable = _context.TimeTables.FirstOrDefault(t => t.date == date);
-            var res = _context.TimeTables.FirstOrDefault(t => t.DoctorId == _doctor.Id && t.date == _timeTable.date);
+            var res = _context.TimeTables.FirstOrDefault(t => t.DoctorId == doctor.Id && t.date == date);
             return res?.ToDomain();
         }
 

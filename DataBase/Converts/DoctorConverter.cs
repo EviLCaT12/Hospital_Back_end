@@ -12,7 +12,7 @@ namespace DataBase.Converts
             {
                 Id = model.Id,
                 FullName= model.FullName,
-                Specialization= model.Specialization
+                Specialization = model.Specialization.ToDomain()
             };
         }
 
@@ -22,7 +22,7 @@ namespace DataBase.Converts
             {
                 Id = model.Id,
                 FullName = model.FullName,
-                Specialization = model.Specialization
+                Specialization = model.Specialization.ToModel()
             };
         }
     }

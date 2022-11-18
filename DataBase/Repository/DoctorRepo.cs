@@ -50,7 +50,7 @@ namespace DataBase.Repository
 
         public Doctor? GetDoctorBySpecialization(Specialization specialization)
         {
-            var doctor = _context.Doctors.First(d => d.Specialization == specialization);
+            var doctor = _context.Doctors.First(d => d.Specialization.ToDomain() == specialization);
             return doctor?.ToDomain();
         }
 
