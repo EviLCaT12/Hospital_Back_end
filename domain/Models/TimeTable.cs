@@ -8,22 +8,22 @@ namespace domain.Models
 {
     public class TimeTable
     {
-        int DoctorId { get; set; }
-        DateTime TimeStart { get; set; }
-        DateTime TimeEnd { get; set; }
+        public int Id { get; set; }
+        public int DoctorId { get; set; }
+        public DateTime date { get; set; }
 
 
-        public TimeTable() : this(0, DateTime.MinValue, DateTime.MinValue) { }
-        public TimeTable(int doctorId, DateTime start, DateTime end)
+        public TimeTable() : this(0, 0, DateTime.MinValue) { }
+        public TimeTable(int id, int doctorId, DateTime date )
         {
-            DoctorId = doctorId;
-            TimeStart = start;
-            TimeEnd = end;
+            this.Id = id;
+            this.DoctorId = doctorId;
+            this.date = date;
         }
 
         public Result IsValid()
         {
-            if (TimeStart >= TimeEnd)
+            if (date < DateTime.Today)
             {
                 return Result.Fail("Non correct time");
             }

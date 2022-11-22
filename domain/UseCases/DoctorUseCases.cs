@@ -30,25 +30,20 @@ namespace domain.UseCases
             }
             else
             {
-                return _db.CreateDoctor(doctor) ? Result.Ok(doctor) : Result.Fail<Doctor>("Error while creating.Try again later");
+                return _db.Create(doctor) ? Result.Ok(doctor) : Result.Fail<Doctor>("Error while creating.Try again later");
             }
         }
 
-        public Result<Doctor> DeleteDoctor(int id)
+        public Result<Doctor> DeleteDoctor(Doctor doctor)
         {
             //Сделать невозможным удаление доктора с записями
-            var res = GetDoctorById(id);
+            var res = GetDoctorById(doctor.Id);
             if (res.IsFailure)
             {
                 return Result.Fail<Doctor>("There is no such doctor");
             }
 
-            return _db.DeleteDoctor(id) ? res : Result.Fail<Doctor>("Error while deleting.Try again later");
-        }
-
-        public Result<IEnumerable<Doctor>> GetAllDoctors()
-        {
-            return Result.Ok(_db.GetAllDoctors());
+            return _db.Delete(doctor) ? res : Result.Fail<Doctor>("Error while deleting.Try again later");
         }
 
         public Result<Doctor> GetDoctorById(int id)
@@ -85,6 +80,12 @@ namespace domain.UseCases
             {
                 return Result.Ok(_db.IsDoctorExist(id));
             }
+        }
+
+        public Result<IEnumerable<Doctor>> GetAllDoctor()
+        {
+            var doctors = _db.GetAllItem();
+            return doctors != null ? Result.Ok(doctors) : Result.Fail<IEnumerable<Doctor>>("We have not doctors :(");
         }
     }
 }

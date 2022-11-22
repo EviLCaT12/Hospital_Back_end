@@ -27,7 +27,7 @@ namespace domain.UseCases
             {
                 return Result.Fail<TimeTable>("Invalid input data:" + res.Error);
             }
-            return _db.CreateTimeTable(timeTable) ? Result.Ok(timeTable) : Result.Fail<TimeTable>("Error while creating.Try again later");
+            return _db.Create(timeTable) ? Result.Ok(timeTable) : Result.Fail<TimeTable>("Error while creating.Try again later");
         }
 
         public Result<TimeTable> UpdateTimeTable(TimeTable timeTable)
@@ -37,7 +37,7 @@ namespace domain.UseCases
             {
                 return Result.Fail<TimeTable>("Invalid input data:" + res.Error);
             }
-            return _db.UpdateTimeTable(timeTable) ? Result.Ok(timeTable) : Result.Fail<TimeTable>("Error while updating.Try again later");
+            return _db.Update(timeTable) ? Result.Ok(timeTable) : Result.Fail<TimeTable>("Error while updating.Try again later");
         }
 
         public Result<TimeTable> GetTimeTableByDoctorAndDate (Doctor doctor, DateTime date)

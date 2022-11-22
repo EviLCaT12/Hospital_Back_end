@@ -51,9 +51,9 @@ namespace Tests
                 new Doctor(1, "zxc", new Specialization(0, "zxczxc"))
             };
             IEnumerable<Doctor> d = doctors;
-            _doctorRepositoryMock.Setup(repository => repository.GetAllDoctors()).Returns(() => d);
+            _doctorRepositoryMock.Setup(repository => repository.GetAllItem()).Returns(() => d);
 
-            var result = _doctorUseCases.GetAllDoctors();
+            var result = _doctorUseCases.GetAllDoctor();
 
             Assert.True(result.Success);
         }
@@ -61,7 +61,7 @@ namespace Tests
         [Fact]
         public void CreateDoctor_SholdTrue()
         {
-            _doctorRepositoryMock.Setup(repository => repository.CreateDoctor(It.IsAny<Doctor>()))
+            _doctorRepositoryMock.Setup(repository => repository.Create(It.IsAny<Doctor>()))
                 .Returns(() => true);
             var doctor = new Doctor(0,"qwecrqwr", new Specialization(1,"asexdas"));
             var res = _doctorUseCases.CreateDoctor(doctor);
@@ -73,7 +73,7 @@ namespace Tests
         public void DeleteNoExistDoctor_SholdFail()
         {
             var doctor = new Doctor(0, "qwecr", new Specialization(1,"123"));
-            var res = _doctorUseCases.DeleteDoctor(0);
+            var res = _doctorUseCases.DeleteDoctor(doctor);
 
             Assert.True(res.IsFailure);
             Assert.Equal("There is no such doctor", res.Error);
@@ -84,9 +84,9 @@ namespace Tests
         public void ErrorWhileDeleting_ShouldFail()
         {
             _doctorRepositoryMock.Setup(repository => repository.GetDoctorById(It.IsAny<int>())).Returns(() => new Doctor(0, "cwercqwe", new Specialization(0, "a")));
-            _doctorRepositoryMock.Setup(repository => repository.DeleteDoctor(It.IsAny<int>())).Returns(() => false);
+            _doctorRepositoryMock.Setup(repository => repository.Delete(It.IsAny<Doctor>())).Returns(() => false);
 
-            var res = _doctorUseCases.DeleteDoctor(0);
+            var res = _doctorUseCases.DeleteDoctor(new Doctor());
 
             Assert.True(res.IsFailure);
             Assert.Equal("Error while deleting.Try again later", res.Error);

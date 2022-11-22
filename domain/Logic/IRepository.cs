@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace domain.Logic
 {
-    public interface IRepository<T> : IDisposable
+    public interface IRepository<T>
         where T : class
     {
         IEnumerable<T> GetAllItem();
-        T GetItemById(int id);
-        void Create(T item);
-        void Update(T item);
-        void Delete(T item);
+        T? GetItemById(int id);
+        bool Create(T item);
+        bool Update(T item);
+        bool Delete(T item);
         void Save();
     }
 }

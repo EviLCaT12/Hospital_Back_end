@@ -10,7 +10,7 @@ namespace domain.Models
     {
         public int Id { get; set; }
         public string FullName { get; set; }
-        Specialization Specialization { get; set; }
+        public Specialization Specialization { get; set; }
 
 
         public Doctor() : this(0,"", new Specialization()) { }
