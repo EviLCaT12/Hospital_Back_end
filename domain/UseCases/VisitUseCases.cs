@@ -45,7 +45,7 @@ namespace domain.UseCases
             }
             return _db.Create(visit) ? Result.Ok(visit) : Result.Fail<Visit>("Error while creating visit. Try again later");
         }
-
+            
         public Result<IEnumerable<DateTime>> GetAllFreeSpec(Specialization specialization)
         {
             var list = _db.GetFreeVisitbySpec(specialization);

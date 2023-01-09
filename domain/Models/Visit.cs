@@ -14,9 +14,10 @@ namespace domain.Models
         public int UserId { get; set; }
         public int DoctorId { get; set; }
 
-        public Visit() : this(DateTime.MinValue, DateTime.MinValue, 0, 0) { }
-        public Visit(DateTime start, DateTime end, int userId, int doctorId)
+        public Visit() : this(0, DateTime.MinValue, DateTime.MinValue, 0, 0) { }
+        public Visit(int id, DateTime start, DateTime end, int userId, int doctorId)
         {
+            Id = id;
             TimeStart = start;
             TimeEnd = end;
             UserId = userId;

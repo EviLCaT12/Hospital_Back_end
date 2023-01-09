@@ -46,7 +46,7 @@ namespace Tests
         {
             _visitRepositoryMock.Setup(repo => repo.Create(It.IsAny<Visit>())).Returns(() => true);
 
-            var visit = new Visit(DateTime.MinValue, DateTime.MaxValue, 1, 1);
+            var visit = new Visit(0, DateTime.MinValue, DateTime.MaxValue, 1, 1);
             var res = _visitUseCases.CreateVisit(visit);
             Assert.True(res.Success);
         }
