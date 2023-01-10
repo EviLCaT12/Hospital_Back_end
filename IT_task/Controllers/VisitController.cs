@@ -48,7 +48,7 @@ namespace IT_task.Controllers
             return Ok(res.Value);
         }
 
-        [HttpGet("get_spec")]
+        [HttpGet("get_docs")]
         public ActionResult GetAllFreeDocs(Doctor doctor)
         {
             var res = _usecases.GetAllFreeDoctor(doctor);

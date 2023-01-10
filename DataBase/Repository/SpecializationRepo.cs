@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataBase.Repository
 {
-    internal class SpecializationRepo : IRepository<Specialization>
+    public class SpecializationRepo : ISpecRepository
     {
         private readonly ApplicationContext _context;
 

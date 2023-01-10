@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataBase.Repository
 {
-    internal class TimeTableRepo : ITimeTableRepository
+    public class TimeTableRepo : ITimeTableRepository
     {
         private readonly ApplicationContext _context;
 
