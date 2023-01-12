@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataBase.Repository
 {
-    internal class VisitRepo : IVisitRepository
+    public class VisitRepo : IVisitRepository
     {
         private readonly ApplicationContext _context;
 

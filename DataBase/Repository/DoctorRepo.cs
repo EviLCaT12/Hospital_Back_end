@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataBase.Repository
 {
-    internal class DoctorRepo : IDoctorRepository
+    public class DoctorRepo : IDoctorRepository
     {
         private readonly ApplicationContext _context;
 

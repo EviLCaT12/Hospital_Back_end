@@ -1,26 +1,53 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using domain.Logic;
+using domain.Models;
+using domain.UseCases;
+using Microsoft.EntityFrameworkCore;
+using DataBase;
+using DataBase.Repository;
 
-namespace IT_task
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ApplicationContext>(options =>
+    options.UseNpgsql($"Host=localhost;Port=5432;Database=db;Username=postgres;Password=2012xxx"));
+builder.Services.AddDbContext<ApplicationContext>(options =>
+    options.EnableSensitiveDataLogging(true));
+builder.Services.AddTransient<IUserRepository, UserRepo>();
+builder.Services.AddTransient<ITimeTableRepository, TimeTableRepo>();
+builder.Services.AddTransient<IVisitRepository, VisitRepo>();
+builder.Services.AddTransient<IDoctorRepository, DoctorRepo>();
+builder.Services.AddTransient<ISpecRepository, SpecializationRepo>();
+builder.Services.AddTransient<UserUseCases>();
+builder.Services.AddTransient<DoctorUseCases>();
+builder.Services.AddTransient<VisitUseCases>();
+builder.Services.AddTransient<TimeTableUseCases>();
+builder.Services.AddControllers();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

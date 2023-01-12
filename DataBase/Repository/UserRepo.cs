@@ -4,7 +4,7 @@ using DataBase.Converts;
 
 namespace DataBase.Repository
 {
-    internal class UserRepo : IUserRepository
+    public class UserRepo : IUserRepository
     {
         private readonly ApplicationContext _context;
 
